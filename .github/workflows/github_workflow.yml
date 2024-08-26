@@ -22,7 +22,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
+          ruby-version: '3.0.0'
 
       - name: Install Fastlane
         run: |
@@ -43,5 +43,5 @@ jobs:
       - name: Upload APK to Firebase App Distribution
         env:
           FIREBASE_TOKEN: "1//03DgHGo3cm-SECgYIARAAGAMSNwF-L9IrAaYqOYSY4rNpftNYjEDhD2odJaKcGYAhE1Ci9umTSuIj09v_yNGCwuBzB76iwU5V7ds"
-        run: bundle exec fastlane android distribute_apk
+        run: bundle exec fastlane android firebase_app_distribution
 
