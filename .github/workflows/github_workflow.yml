@@ -23,6 +23,8 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0.0'
+          bundle-cache: true
+          working-directory: android
 
       - name: Install Fastlane
         run: |
@@ -32,7 +34,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.0.0'
+          channel: 'stable'
 
       - name: Install dependencies
         run: flutter pub get
@@ -43,5 +45,7 @@ jobs:
       - name: Upload APK to Firebase App Distribution
         env:
           FIREBASE_TOKEN: "1//03DgHGo3cm-SECgYIARAAGAMSNwF-L9IrAaYqOYSY4rNpftNYjEDhD2odJaKcGYAhE1Ci9umTSuIj09v_yNGCwuBzB76iwU5V7ds"
-        run: bundle exec fastlane android firebase_app_distribution
+        run: |
+          bundle exec fastlane android firebase_app_distribution
+        working-directory: android
 
